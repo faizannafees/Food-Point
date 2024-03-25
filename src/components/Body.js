@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withVegLabel } from "./RestaurantCard";
 import { useState, useEffect } from "../../node_modules/react";
 import Shimmer from "./Shimmer";
 import { Link } from "../../node_modules/react-router-dom";
@@ -13,6 +13,8 @@ const Body = () => {
 
     const [filteredList, setFilteredList] = useState([]);
 
+    const VegRestaurantCard = withVegLabel(RestaurantCard);
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -26,12 +28,14 @@ const Body = () => {
         setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
+    console.log(listOfRestaurants);
+
     const onlineStatus = useOnlineStatus();
 
     if(onlineStatus === false) return <h1>Looks like ! You're offline, Please check your connection !!!</h1>
       
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
-        
+
         <div className="body">
             <div className="filter flex m-4 p-4 ml-[130px]">
                 <div className="search">
@@ -61,7 +65,9 @@ const Body = () => {
                 {
                   filteredList.map(restaurant => (
                    <Link to={"/restaurants/" + restaurant.info.id} key={restaurant.info.id}>
-                       <RestaurantCard resData={restaurant} />
+                    {
+                        restaurant.info.veg ? <VegRestaurantCard resData={restaurant} /> : <RestaurantCard resData={restaurant} />
+                    }
                    </Link>
                    )
                   )

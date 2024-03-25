@@ -6,6 +6,7 @@ const RestaurantCard = (props) => {
     const {
         cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla
         } = resData?.info;
+
     return (
         <div className="res-card m-4 w-60 bg-slate-50 rounded-2xl transition-transform duration-300 transform hover:scale-90 hover:shadow-lg">
             <div>
@@ -23,6 +24,18 @@ const RestaurantCard = (props) => {
             </div>
         </div>
     )
+
+}
+
+export const withVegLabel = (RestaurantCard) => {
+    return (props) => {
+        return (
+            <div>
+                <label className="absolute bg-black text-white rounded-md mx-4 z-20 px-6 py-0.5 font-medium">Veg</label>
+                <RestaurantCard {...props} />
+            </div>
+        )
+    }
 }
 
 export default RestaurantCard;
