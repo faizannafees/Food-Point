@@ -28,8 +28,6 @@ const Body = () => {
         setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
-    console.log(listOfRestaurants);
-
     const onlineStatus = useOnlineStatus();
 
     if(onlineStatus === false) return <h1>Looks like ! You're offline, Please check your connection !!!</h1>

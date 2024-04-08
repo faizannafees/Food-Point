@@ -1,6 +1,6 @@
 import { IMG_CDN_URL } from "../utils/constants";
 
-const RestaurantCard = (props) => {
+const RestaurantCard = ( props ) => {
     const {resData} = props;
 
     const {
@@ -8,7 +8,7 @@ const RestaurantCard = (props) => {
         } = resData?.info;
 
     return (
-        <div className="res-card m-4 w-60 bg-slate-50 rounded-2xl transition-transform duration-300 transform hover:scale-90 hover:shadow-lg">
+        <div className="res-card m-4 w-60 bg-slate-50 rounded-2xl transition-transform duration-200 transform hover:scale-90 hover:shadow-lg">
             <div>
               <img 
                 className="res-logo w-full rounded-2xl"
@@ -28,7 +28,7 @@ const RestaurantCard = (props) => {
 }
 
 export const withVegLabel = (RestaurantCard) => {
-    return (props) => {
+    return ( props ) => {
         return (
             <div>
                 <label className="absolute bg-black text-white rounded-md mx-4 z-20 px-6 py-0.5 font-medium">Veg</label>
