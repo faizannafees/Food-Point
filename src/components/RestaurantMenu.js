@@ -1,4 +1,5 @@
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 
@@ -14,23 +15,27 @@ const RestaurantMenu = () => {
 
     const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card?.card;
 
-    console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-
     const categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => 
         c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     )
 
-    console.log(categories)
-
     return (
-        <div className="menu">
-            <h1 className="font-bold text-[26px] mt-12 w-1/2 m-auto">{name}</h1>
-            <div className="border border-solid border-gray-300 rounded-3xl w-1/2 m-auto p-6 mt-8 shadow-lg">
-              <p className="font-semibold">⭐ {avgRating} ◦ {costForTwoMessage}</p>
-              <p>{cuisines.join(", ")}</p>
-              <h3 className="font-semibold">{sla.minDeliveryTime} - {sla.maxDeliveryTime} mins</h3>
-              <div className="font-normal text-gray-500 font-light">{areaName}</div>
-            </div>  
+        <div className="menu w-7/12 m-auto">
+            <h1 className="font-bold text-3xl mt-12">{name}</h1>
+            <div className="border border-solid border-gray-300 rounded-3xl p-6 mt-8 shadow-lg">
+              <p className="font-semibold py-0.5">⭐ {avgRating} ◦ {costForTwoMessage}</p>
+              <p className="py-0.5">{cuisines.join(", ")}</p>
+              <h3 className="font-semibold py-0.5">{sla.minDeliveryTime} - {sla.maxDeliveryTime} mins</h3>
+              <div className="font-normal text-gray-500 py-0.5">{areaName}</div>
+            </div>
+
+            <div className="">
+                {
+                  categories.map((category) => (
+                     <RestaurantCategory categoryData={category?.card?.card} key={category?.card?.card?.title}/>
+                   ))
+                }
+            </div>
         </div>
     )
 }
