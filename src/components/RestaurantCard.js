@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { IMG_CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const RestaurantCard = ( props ) => {
     const {resData} = props;
@@ -6,6 +8,8 @@ const RestaurantCard = ( props ) => {
     const {
         cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla
         } = resData?.info;
+
+    const { loggedInUser } = useContext(UserContext);
 
     return (
         <div className="res-card m-4 w-60 bg-slate-50 rounded-2xl transition-transform duration-200 transform hover:scale-90 hover:shadow-lg">

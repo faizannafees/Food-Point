@@ -1,10 +1,13 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "../../node_modules/react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 
 const Header = () => {
+
+    const {loggedInUser} = useContext(UserContext)
 
     const onlineStatus = useOnlineStatus();
 

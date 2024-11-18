@@ -11,16 +11,16 @@ class UserClass extends React.Component{
                 location : "Default"
             }
         }
-        console.log(this.props.name + " Child Constructor");
+        //console.log(this.props.name + " Child Constructor");
     }
 
     async componentDidMount(){
         const data = await fetch(" https://api.github.com/users/akshaymarch7");
         const json = await data.json();
 
-        console.log("Component Did Mount");
+        //console.log("Component Did Mount");
 
-        console.log(json);
+        //console.log(json);
 
 
 
@@ -31,16 +31,16 @@ class UserClass extends React.Component{
     }
 
     componentDidUpdate(){
-        console.log("Component Did Update");
+        //console.log("Component Did Update");
     }
 
     componentWillUnmount(){
-        console.log("Component Wil Unmount");
+        //console.log("Component Wil Unmount");
     }
 
     render(){
 
-        console.log(this.props.name + " Child Render");
+        //console.log(this.props.name + " Child Render");
 
         const { name, location, avatar_url } = this.state.userData;
 

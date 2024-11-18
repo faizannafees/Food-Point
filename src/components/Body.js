@@ -24,6 +24,8 @@ const Body = () => {
         
         const json = await data.json();
 
+        console.log(json);
+
         setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
@@ -37,7 +39,7 @@ const Body = () => {
         <div className="body">
             <div className="filter flex m-4 p-4 ml-[130px]">
                 <div className="search">
-                    <input type="text" className="search-box border border-solid border-black focus:border-pink-400 focus:outline-none focus:shadow-md rounded-sm" value={searchText} onChange={(e) => {
+                    <input type="text" className="search-box border border-solid border-black focus:border-pink-400 focus:outline-none focus:shadow-md rounded-sm px-1" value={searchText} onChange={(e) => {
                         setSearchText(e.target.value);
                     }} />
                     <button className="search-btn mx-2 px-2 py-0.5 bg-green-100 border border-solid border-blue-400 rounded-md font-medium hover:bg-green-200" onClick={() => {
